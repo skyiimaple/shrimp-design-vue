@@ -1,11 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { PImg } from '@pvt-design-vue/components'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div>
+    <p-img
+      src="https://pss.bdstatic.com/static/superman/img/logo/logo_redBlue-0a7c20fcaa.png"
+      alt="baidu"
+      preview
+      style="width: 300px; height: 200px; cursor: pointer"
+    />
+  </div>
 </template>
 
 <style scoped></style>
