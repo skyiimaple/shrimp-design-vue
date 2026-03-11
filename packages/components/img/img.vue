@@ -4,7 +4,7 @@
     * @Description: img组件
 -->
 <template>
-  <div ref="imgWrapper" class="pvt-img" :class="{ preview }">
+  <div ref="imgWrapper" class="shrimp-img" :class="{ preview }">
     <slot :show="show" :viewer="viewer" :error="error">
       <img v-bind="imgProps" :src="src" :alt="alt" />
     </slot>
@@ -15,6 +15,8 @@
 import { onMounted, onUnmounted, ref, useSlots, useTemplateRef } from 'vue'
 import { imgProps } from './img'
 import Viewer from 'viewerjs'
+// viewerjs
+import 'viewerjs/dist/viewer.css'
 
 defineOptions({
   name: 'PImg',
@@ -56,5 +58,5 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '@pvt-design-vue/styles/components/img.scss';
+@use '@shrimp-design-vue/styles/components/img.scss';
 </style>

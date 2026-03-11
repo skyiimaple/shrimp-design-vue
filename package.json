@@ -1,5 +1,5 @@
 {
-  "name": "pvt-design-vue",
+  "name": "shrimp-design-vue",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,10 +14,10 @@
   "author": "skyiimaple",
   "license": "ISC",
   "dependencies": {
-    "@pvt-design-vue/components": "workspace:^",
-    "@pvt-design-vue/hooks": "workspace:^",
-    "@pvt-design-vue/styles": "workspace:*",
-    "@pvt-design-vue/utils": "workspace:^",
+    "@shrimp-design-vue/components": "workspace:*",
+    "@shrimp-design-vue/hooks": "workspace:*",
+    "@shrimp-design-vue/styles": "workspace:*",
+    "@shrimp-design-vue/utils": "workspace:*",
     "axios": "^1.13.6",
     "dayjs": "^1.11.19",
     "tsx": "^4.21.0",

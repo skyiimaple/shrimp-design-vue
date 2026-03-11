@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PImg } from '@pvt-design-vue/components'
+import { PImg } from '@shrimp-design-vue/components'
 </script>
 
 <template>
