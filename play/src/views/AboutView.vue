@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { PImg } from '@shrimp-design-vue/components'
+import { SpImg } from '@shrimp-design-vue/components'
 </script>
 
 <template>
   <div>
-    <p-img
+    <sp-img
       src="https://pss.bdstatic.com/static/superman/img/logo/logo_redBlue-0a7c20fcaa.png"
       alt="baidu"
       preview

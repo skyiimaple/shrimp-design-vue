@@ -4,7 +4,7 @@
     * @Description: img组件
 -->
 <template>
-  <div ref="imgWrapper" class="shrimp-img" :class="{ preview }">
+  <div ref="imgWrapper" class="sp-img" :class="{ preview }">
     <slot :show="show" :viewer="viewer" :error="error">
       <img v-bind="imgProps" :src="src" :alt="alt" />
     </slot>
