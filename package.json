@@ -8,8 +8,7 @@
   },
   "keywords": [
     "vue",
-    "vxe-table",
-    "ant-design-vue"
+    "vxe-table"
   ],
   "author": "skyiimaple",
   "license": "ISC",
@@ -28,6 +27,7 @@
   },
   "devDependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@arco-design/web-vue": "^2.57.0",
     "@types/node": "^22.19.15",
     "@vitepress-demo-preview/plugin": "^1.4.0",
     "@vue/tsconfig": "^0.7.0",

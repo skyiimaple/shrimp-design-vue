@@ -31,8 +31,8 @@
           :title="(collapsed ? '展开' : '收起') + '侧边栏'"
           @click="handleCollapse"
         >
-          <RightOutlined v-if="collapsed" />
-          <LeftOutlined v-else />
+          <icon-right v-if="collapsed" />
+          <icon-left v-else />
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { layoutProps } from './layout'
-import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue'
+import { IconRight, IconLeft } from '@arco-design/web-vue/es/icon'
 const props = defineProps(layoutProps)
 
 const collapsed = defineModel<boolean>('collapsed', {
@@ -68,5 +68,5 @@ const handleCollapse = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@shrimp-design-vue/styles/components/layout.scss';
+@use '@shrimp-design-vue/styles/components/layout.scss';
 </style>
