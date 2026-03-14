@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SpLayout, SpSearchGroup, SpSearchFormField } from '@shrimp-design-vue/components'
+import { SpLayout, SpSearchForm, SpSearchFormField } from '@shrimp-design-vue/components'
 import type { SearchFormFields } from '@shrimp-design-vue/components/search-form/interface'
 
 // fields 配置
@@ -32,7 +32,7 @@ const fieldsConfig: SearchFormFields = {
         <!-- 方式一：使用插槽 -->
         <div style="margin-bottom: 32px; background: white; padding: 24px; border-radius: 8px">
           <h3 style="margin-top: 0">方式一：使用插槽渲染</h3>
-          <sp-search-group :fields="fieldsConfig">
+          <sp-search-form :fields="fieldsConfig">
             <sp-search-form-field
               type="input"
               label="用户名"
@@ -51,7 +51,7 @@ const fieldsConfig: SearchFormFields = {
                 <a-input-tag :value="value" v-bind="props" @change="emits('change', $event)" />
               </template>
             </sp-search-form-field>
-          </sp-search-group>
+          </sp-search-form>
         </div>
       </main>
     </sp-layout>

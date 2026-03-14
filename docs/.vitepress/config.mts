@@ -6,8 +6,8 @@ import {
 
 export default defineConfig({
   srcDir: "src",
-  title: "Maple's 个人笔记",
-  description: "记录学习过程",
+  title: "Shrimp Design Vue",
+  description: "基于 Arco Design Vue 二次开发的业务组件库",
   lastUpdated: true,
   themeConfig: {
     logo: {
@@ -16,18 +16,39 @@ export default defineConfig({
     },
     nav: [
       { text: "首页", link: "/" },
-      { text: "笔记", link: "/note" },
-      { text: "面经", link: "/interview" },
-      { text: "项目", link: "/project" },
+      { text: "指南", link: "/guide/getting-started" },
+      { text: "组件", link: "/components/search-form" },
       {
         text: "其它",
         link: "/other/markdown-examples",
         activeMatch: "^/other",
       },
-      { text: "关于", link: "/about" },
     ],
 
     sidebar: {
+      "/guide/": [
+        {
+          text: "指南",
+          items: [
+            { text: "开始使用", link: "/guide/getting-started" },
+          ],
+        },
+      ],
+      "/components/": [
+        {
+          text: "基础组件",
+          items: [
+            { text: "Layout 页面布局", link: "/components/layout" },
+            { text: "Image 图片预览", link: "/components/img" },
+          ],
+        },
+        {
+          text: "业务组件",
+          items: [
+            { text: "Search Form 搜索表单", link: "/components/search-form" },
+          ],
+        },
+      ],
       "/other/": [
         {
           text: "其它",
