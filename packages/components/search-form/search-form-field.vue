@@ -20,10 +20,10 @@
     <!-- 输入框 -->
     <a-input
       v-else-if="type === 'input'"
-      v-model:value="modelValue"
+      :value="modelValue"
       :placeholder="placeholder"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @input="emits('update:modelValue', $event.trim())"
     />
 
     <!-- 数字输入框 -->
@@ -32,16 +32,7 @@
       :value="modelValue"
       :placeholder="placeholder"
       v-bind="fieldProps"
-      @update:value="handleChange"
-    />
-
-    <!-- 标签输入框 -->
-    <a-input-tag
-      v-else-if="type === 'input-tag'"
-      :value="modelValue"
-      :placeholder="placeholder"
-      v-bind="fieldProps"
-      @update:value="handleChange"
+      @input="handleChange"
     />
 
     <!-- 选择器 -->
@@ -51,7 +42,7 @@
       :placeholder="placeholder"
       :options="options"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     />
 
     <!-- 日期选择器 -->
@@ -61,7 +52,7 @@
       :placeholder="placeholder"
       style="width: 100%"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     />
 
     <!-- 日期范围选择器 -->
@@ -70,7 +61,7 @@
       :value="modelValue"
       :placeholder="placeholder"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     />
 
     <!-- 单选框组 -->
@@ -78,7 +69,7 @@
       v-else-if="type === 'radio'"
       :value="modelValue"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     >
       <a-radio
         v-for="option in options"
@@ -95,7 +86,7 @@
       v-else-if="type === 'checkbox'"
       :value="modelValue"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     >
       <a-checkbox
         v-for="option in options"
@@ -112,7 +103,7 @@
       v-else-if="type === 'switch'"
       :value="modelValue"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     />
 
     <!-- 树形选择器 -->
@@ -122,7 +113,7 @@
       :placeholder="placeholder"
       :data="options"
       v-bind="fieldProps"
-      @update:value="handleChange"
+      @change="handleChange"
     />
   </a-form-item>
 </template>
@@ -130,7 +121,9 @@
 <script setup lang="ts">
 import { SearchFormFieldEmits } from './interface'
 import { searchFormFieldProps } from './search-form-field'
-
+defineOptions({
+  name: 'SpSearchFormField',
+})
 const props = defineProps(searchFormFieldProps)
 const emits = defineEmits<SearchFormFieldEmits>()
 

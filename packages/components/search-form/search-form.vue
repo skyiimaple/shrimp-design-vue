@@ -10,9 +10,18 @@
       <a-row :gutter="16">
         <template v-for="(vnode, index) in fieldNodes" :key="Symbol(index)">
           <a-col :span="fieldSpan">
-            <component :is="vnode" />
+            <component :is="vnode" v-model="value[vnode.props?.name]" />
           </a-col>
         </template>
+        <!-- 在末尾增加重置和查询按钮 -->
+        <a-col :span="fieldSpan" style="text-align: right">
+          <a-form-item>
+            <a-space align="end">
+              <!-- <a-button @click="reset">重置</a-button> -->
+              <a-button type="primary" @click="search">查询</a-button>
+            </a-space>
+          </a-form-item>
+        </a-col>
       </a-row>
     </a-form>
   </div>
@@ -25,6 +34,7 @@ import {
   nextTick,
   onMounted,
   onUnmounted,
+  reactive,
   ref,
   useSlots,
   VNode,
@@ -35,22 +45,26 @@ import { SearchFormEmits, SearchFormField } from './interface'
 import SpSearchFormField from './search-form-field.vue'
 
 const props = defineProps(searchFormProps)
-const emit = defineEmits<SearchFormEmits>()
+const emits = defineEmits<SearchFormEmits>()
 
 const slots = useSlots()
 const fieldNodes = ref<VNode[]>([])
 
 const renderFieldNodes = () => {
-  console.log('🚀slots:', slots)
-  console.log('🚀props:', props)
   if (slots.default) {
     slots.default().forEach((vnode: VNode) => {
-      console.log('🚀vnode:', vnode)
-      fieldNodes.value.push(vnode)
+      if ((vnode.type as any).name === 'SpSearchFormField') {
+        if (vnode.props?.modelValue || vnode.props?.['modal-value']) {
+          value[vnode.props?.name] =
+            vnode.props.modelValue || vnode.props?.['modal-value']
+        }
+        fieldNodes.value.push(vnode)
+      }
     })
   }
-  if (props.fields) {
-    Object.values(props.fields).forEach((field: SearchFormField) => {
+  const fields = props.fields
+  if (fields) {
+    Object.entries(fields).forEach(([key, field]) => {
       // 设置插槽
       const defaultSlot = field.defaultSlot
         ? {
@@ -70,11 +84,16 @@ const renderFieldNodes = () => {
             },
           }
         : {}
+      // 优先使用 field.name，如果没有则使用对象 key
+      const fieldName = field.name || key
+      if (field.value) {
+        value[fieldName] = field.value
+      }
       fieldNodes.value.push(
         h(
           SpSearchFormField,
           {
-            name: field.name,
+            name: fieldName,
             ...field,
           },
           {
@@ -120,6 +139,14 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', resizeHandler)
 })
+
+const value = reactive(props.modelValue || {})
+const reset = () => {
+  emits('reset')
+}
+const search = () => {
+  emits('search', value, value)
+}
 </script>
 
 <style lang="scss" scoped></style>

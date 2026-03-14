@@ -4,11 +4,6 @@ import type { SearchFormFields } from '@shrimp-design-vue/components/search-form
 
 // fields 配置
 const fieldsConfig: SearchFormFields = {
-  name: {
-    type: 'input',
-    label: '姓名',
-    placeholder: '请输入姓名',
-  },
   status: {
     type: 'select',
     label: '状态',
