@@ -3,8 +3,24 @@
     <sp-search-form
       v-model="formModel"
       :fields="fields"
+      :field-span-map="{ xs: 12, sm: 12, md: 12, xl: 12 }"
       @search="handleSearch"
-    />
+    >
+      <sp-search-form-field
+        type="custom"
+        label="自定义"
+        placeholder="请输入"
+        name="tags"
+      >
+        <template #default="{ value, props, emits }">
+          <a-input
+            :value="value"
+            v-bind="props"
+            @input="emits('change', $event)"
+          />
+        </template>
+      </sp-search-form-field>
+    </sp-search-form>
     <div
       style="
         margin-top: 20px;
@@ -21,12 +37,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SpSearchForm } from '@shrimp-design-vue/components'
+import { SpSearchForm, SpSearchFormField } from '@shrimp-design-vue/components'
 import { SearchFormFields } from '@shrimp-design-vue/components/search-form/interface'
 
 const formModel = ref({
-  username: 'Admin',
-  status: '1',
+  username: '',
+  status: '',
 })
 
 const fields: SearchFormFields = {
@@ -42,7 +58,7 @@ const fields: SearchFormFields = {
   number: {
     type: 'input-number',
     label: '号码',
-    placeholder: '',
+    placeholder: '请输入',
     value: '13236548963',
   },
   status: {
